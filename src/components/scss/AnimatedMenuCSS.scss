@@ -1,0 +1,114 @@
+$barColors: rgb(0, 0, 0);
+
+.animated-dots {
+	position: absolute;
+	right: 1vw;
+	top: 0vh;
+}
+
+@mixin bar() {
+	display: block;
+	position: absolute;
+	width: 30px;
+	height: 5px;
+	margin-top: 10px;
+	background-color: $barColors;
+}
+.lineOne,
+.lineTwo,
+.lineThree {
+	@include bar();
+}
+
+@keyframes lineOneReturn {
+	0% {
+		top: 20px;
+	}
+	20% {
+		top: 10px;
+	}
+	99% {
+		top: 10px;
+	}
+	100% {
+		transform: rotate(0deg);
+	}
+}
+
+@keyframes lineThreeReturn {
+	0% {
+		top: 20px;
+	}
+	20% {
+		top: 30px;
+	}
+	99% {
+		top: 30px;
+	}
+	100% {
+		transform: rotate(0deg);
+	}
+}
+
+.lineOne {
+	top: 10px;
+	right: 10px;
+	animation: lineOneReturn 2s forwards;
+}
+.lineTwo {
+	top: 20px;
+	right: 10px;
+}
+.lineThree {
+	top: 30px;
+	right: 10px;
+	animation: lineThreeReturn 2s forwards;
+}
+
+@keyframes comingDown {
+	0% {
+		top: 10px;
+	}
+	20% {
+		top: 20px;
+	}
+	99% {
+		top: 20px;
+	}
+	100% {
+		transform: rotate(45deg);
+	}
+}
+
+@keyframes comingUp {
+	0% {
+		top: 30px;
+	}
+	20% {
+		top: 20px;
+	}
+
+	99% {
+		top: 20px;
+	}
+	100% {
+		transform: rotate(-45deg);
+	}
+}
+
+.lineThreeActive {
+	@include bar();
+	top: 20px;
+	right: 10px;
+	animation: comingUp 0.5s forwards;
+}
+.lineOneActive {
+	@include bar();
+	top: 20px;
+	right: 10px;
+	animation: comingDown 0.5s forwards;
+}
+.lineTwoActive {
+	@include bar();
+	opacity: 0;
+}

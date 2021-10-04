@@ -1,0 +1,141 @@
+@media (min-width: 300px) and (max-width: 700px) {
+  input {
+    font-family: Glory;
+    font-weight: bold;
+    font-size: 18px;
+    border-width: 0px;
+    background-color: transparent;
+    width: 80vw;
+    height: 10vw;
+    margin-left: 1vw;
+    z-index: 1;
+  }
+  .overlay {
+    position: absolute;
+    width: 100vw;
+    height: 77vh;
+    z-index: 0;
+  }
+  .authenticate-body {
+    overflow: hidden !important;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .authenticate-body .inputContainer {
+    background-color: white;
+    font-family: Glory;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    width: 80vw;
+    height: 10vw;
+    border-radius: 1vw;
+    border-width: 1px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    z-index: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .authenticate-body button {
+    font-family: Glory;
+    font-weight: bold;
+    background-color: #fc036b;
+    color: white;
+    font-size: 18px;
+    font-family: Glory;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    width: 80vw;
+    height: 10vw;
+    border-radius: 1vw;
+    border-width: 1px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    z-index: 1;
+  }
+  .authenticate-body button:hover {
+    background-color: white;
+    color: #fc036b;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+  ::-webkit-input-placeholder {
+    font-family: Glory;
+    color: #bbbbbb;
+  }
+  :-ms-input-placeholder {
+    font-family: Glory;
+    color: #bbbbbb;
+  }
+  ::-ms-input-placeholder {
+    font-family: Glory;
+    color: #bbbbbb;
+  }
+  ::placeholder {
+    font-family: Glory;
+    color: #bbbbbb;
+  }
+  @-webkit-keyframes Notify {
+    0% {
+      top: 28vw;
+      opacity: 1;
+    }
+    50% {
+      top: 25vw;
+    }
+    90% {
+      top: 25vw;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes Notify {
+    0% {
+      top: 28vw;
+      opacity: 1;
+    }
+    50% {
+      top: 25vw;
+    }
+    90% {
+      top: 25vw;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  .notify-modal {
+    position: absolute;
+    width: 100vw;
+    height: 10vh;
+    left: 5vw;
+    z-index: 1;
+    color: white;
+    font-size: 5.5vw;
+    -webkit-animation: Notify 4s forwards;
+            animation: Notify 4s forwards;
+  }
+}
+
+@media (min-width: 700x) and (max-width: 1800px) {
+  body {
+    overflow: hidden !important;
+  }
+}
+/*# sourceMappingURL=Authenticate.css.map */

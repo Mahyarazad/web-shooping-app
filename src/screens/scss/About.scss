@@ -1,0 +1,17 @@
+$width: 80vw;
+$primaryColor: #fc036b;
+
+@media (min-width: 300px) and (max-width: 700px) {
+	
+	.body {
+		display: flex !important;
+		justify-content: center;
+		flex-direction: column !important;
+		align-items: center;
+		padding-left: 4vw;
+		padding-right: 4vw;
+		
+		
+	}
+
+}

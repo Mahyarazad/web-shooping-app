@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import { LandingScreen } from "./screens/LandingScreen";
+import { Provider } from "react-redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import ReduxThunk from "redux-thunk";
+import { authReducer } from "./store/reducers/auth.js";
+import { drawerReducer } from "./store/reducers/drawer";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+	const rootReducer = combineReducers({
+		auth: authReducer,
+		drawer: drawerReducer
+	});
 
+	const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
+
+	return (
+		<Provider store={store}>
+			<LandingScreen />
+		</Provider>
+	);
+}
 export default App;

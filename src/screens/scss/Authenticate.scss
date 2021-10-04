@@ -1,0 +1,99 @@
+$width: 80vw;
+$primaryColor: #fc036b;
+
+@media (min-width: 300px) and (max-width: 700px) {
+	@mixin bodySize() {
+		font-family: Glory;
+		margin-top: 2vw;
+		margin-bottom: 2vw;
+		width: $width;
+		height: 10vw;
+		border-radius: 1vw;
+		border-width: 1px;
+		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+		z-index: 1;
+        
+	}
+	input {
+		font-family: Glory;
+		font-weight: bold;
+		font-size: 18px;
+		border-width: 0px;
+		background-color: transparent;
+		width: $width;
+		height: 10vw;
+		margin-left: 1vw;
+		z-index: 1;
+	}
+	.overlay {
+		position: absolute;
+		width: 100vw;
+		height: 77vh;
+		z-index: 0;
+		// object-fit: cover;
+	}
+	.authenticate-body {
+        overflow: hidden !important;
+		display: flex !important;
+		justify-content: center;
+		flex-direction: column !important;
+		align-items: center;
+		.inputContainer {
+			background-color: white;
+			@include bodySize();
+			display: flex;
+			align-items: center;
+		}
+		button {
+			&:hover {
+				background-color: white;
+				color: $primaryColor;
+				transition: all 0.3s;
+			}
+			font-family: Glory;
+			font-weight: bold;
+			background-color: $primaryColor;
+			color: white;
+			font-size: 18px;
+			@include bodySize();
+		}
+	}
+
+	::placeholder {
+		font-family: Glory;
+		color: rgb(187, 187, 187);
+	}
+	@keyframes Notify {
+		0% {
+			top: 28vw;
+			opacity: 1;
+		}
+        50% {
+			top: 25vw;
+		}
+		90% {
+			top: 25vw;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+	.notify-modal {
+		position: absolute;
+		width: 100vw;
+		height: 10vh;
+		left: 5vw;
+		z-index: 1;
+		color: white;
+		font-size: 5.5vw;
+		animation: Notify 4s forwards;
+	}
+}
+
+@media (min-width: 700x) and (max-width: 1800px) {
+    &body {
+        
+        overflow: hidden !important;
+    }
+
+}

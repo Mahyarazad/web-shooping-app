@@ -1,0 +1,153 @@
+$footerColor: #fc036b;
+$bodyColor: transparent;
+$headerColor: #fc036b;
+$asideColor: rgb(125, 243, 16);
+$drawerColor: rgb(255, 255, 255);
+
+$bodyHeight: 80vh;
+$footerHeight: 12vh;
+$headerHeight: 8vh;
+
+@mixin flexCenter {
+	display: flex;
+	justify-content: "center";
+	align-items: "center";
+}
+
+@mixin phoneGrid() {
+	font-size: 30;
+	@import url("https://fonts.googleapis.com/css2?family=Glory:wght@100&display=swap");
+	font-family: "Glory", sans-serif;
+	display: grid;
+	height: 100vh;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr 10fr 2fr;
+	grid-template-areas:
+		"header"
+		"body"
+		"footer";
+	.header {
+		grid-area: header;
+		background-color: $headerColor;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		.animated-dots {
+			display: block !important;
+		}
+		min-height: $headerHeight;
+		z-index: 2;
+		
+	}
+	.aside {
+		display: none;
+	}
+	.body {
+		@include flexCenter();
+		grid-area: body;
+		background-color: $bodyColor;
+		min-height: $bodyHeight;
+		flex-direction: column;
+		z-index: 1;
+		overflow: scroll;
+	}
+
+	.footer {
+		grid-area: footer;
+		min-height: $footerHeight;
+		background-color: $footerColor;
+		z-index: 2;
+	}
+}
+@mixin webGrid {
+	font-size: 30;
+	@import url("https://fonts.googleapis.com/css2?family=Glory:wght@100&display=swap");
+	font-family: "Glory", sans-serif;
+	display: grid;
+	height: 100vh;
+	grid-template-columns: 1fr 0.4fr;
+	grid-template-rows: 1fr 10fr 2fr;
+	grid-template-areas:
+		"header header"
+		"body aside"
+		"footer footer";
+	.header {
+		grid-area: header;
+		background-color: $headerColor;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		.animated-dots {
+			display: none;
+		}
+		min-height: 7vh;
+	}
+	.aside {
+		@include flexCenter();
+		grid-area: aside;
+		background-color: $asideColor;
+	}
+
+	.body {
+		@include flexCenter();
+		background-color: $bodyColor;
+		min-height: 77vh;
+		overflow-y: scroll;
+		overflow-x:hidden;
+		flex-direction: column;
+	}
+
+	.footer {
+		@include flexCenter();
+		grid-area: footer;
+		min-height: 10vh;
+		background-color: $footerColor;
+	}
+}
+.container {
+	@mixin drawerStyle {
+		display: flex;
+		justify-content: flex-start;
+		padding-top: 30%;
+		align-items: center;
+		flex-direction: column;
+		position: absolute;
+		background-color: $drawerColor;
+		top: $headerHeight;
+		left: 0%;
+		width: 100vw !important;
+		min-height: $bodyHeight + $footerHeight!important;
+		overflow: hidden !important;
+	}
+	@media (min-width: 300px) and (max-width: 700px) {
+		@include phoneGrid();
+		.drawer-inactive {
+			@include drawerStyle();
+			display: block;
+			height: 0 !important;
+			width: 0 !important;
+			left: 100%;
+			opacity: 0;
+			transition: left 0.5s;
+		}
+
+		.drawer-active + .header {
+			background-color: $drawerColor !important;
+		}
+		.drawer-active { 
+			
+			@include drawerStyle();
+			transition: all 0.4s;
+			z-index: 3 !important;
+		}
+		&.footer.header.body {
+			display: none !important;
+		}
+	}
+	@media (min-width: 700px) and (max-width: 1800px) {
+		@include webGrid();
+		.drawer-inactive {
+			display: none;
+		}
+	}
+}

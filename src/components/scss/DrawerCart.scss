@@ -1,0 +1,10 @@
+$primary: #fc036b;
+
+.drawer-item {
+	&:hover {
+		color: $primary !important;
+		font-weight: bold;
+        cursor: pointer;
+	}
+}
+/*# sourceMappingURL=DrawerCart.css.map */
