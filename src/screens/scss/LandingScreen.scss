@@ -1,7 +1,7 @@
 $footerColor: #fc036b;
 $bodyColor: transparent;
 $headerColor: #fc036b;
-$asideColor: rgb(125, 243, 16);
+$asideColor: rgb(255, 204, 37);
 $drawerColor: rgb(255, 255, 255);
 
 $bodyHeight: 80vh;
@@ -64,9 +64,7 @@ $headerHeight: 8vh;
 	@import url("https://fonts.googleapis.com/css2?family=Glory:wght@100&display=swap");
 	font-family: "Glory", sans-serif;
 	display: grid;
-	height: 100vh;
 	grid-template-columns: 1fr 0.4fr;
-	grid-template-rows: 1fr 10fr 2fr;
 	grid-template-areas:
 		"header header"
 		"body aside"
@@ -74,33 +72,37 @@ $headerHeight: 8vh;
 	.header {
 		grid-area: header;
 		background-color: $headerColor;
-		display: flex;
-		justify-content: flex-end;
-		align-items: center;
+		position: sticky;
+		top: 0;
 		.animated-dots {
 			display: none;
 		}
-		min-height: 7vh;
+		height: 70px;
+		min-height: 70px;
 	}
 	.aside {
 		@include flexCenter();
 		grid-area: aside;
 		background-color: $asideColor;
+		min-height: 800px;
 	}
 
 	.body {
 		@include flexCenter();
 		background-color: $bodyColor;
-		min-height: 77vh;
+		min-height: 800px;
 		overflow-y: scroll;
 		overflow-x:hidden;
 		flex-direction: column;
-	}
 
+	}
+	.body::-webkit-scrollbar {
+		display: none;
+	  }
 	.footer {
 		@include flexCenter();
 		grid-area: footer;
-		min-height: 10vh;
+		min-height: 100px;
 		background-color: $footerColor;
 	}
 }
@@ -120,6 +122,11 @@ $headerHeight: 8vh;
 		overflow: hidden !important;
 	}
 	@media (min-width: 300px) and (max-width: 700px) {
+		.header{
+			.header-container {
+				display: none
+			}
+		}
 		@include phoneGrid();
 		.drawer-inactive {
 			@include drawerStyle();
@@ -135,11 +142,11 @@ $headerHeight: 8vh;
 			background-color: $drawerColor !important;
 		}
 		.drawer-active { 
-			
 			@include drawerStyle();
 			transition: all 0.4s;
 			z-index: 3 !important;
 		}
+
 		&.footer.header.body {
 			display: none !important;
 		}
@@ -148,6 +155,13 @@ $headerHeight: 8vh;
 		@include webGrid();
 		.drawer-inactive {
 			display: none;
+		}
+		.header{
+			display: flex;
+			flex-direction: 'column';
+			justify-content: 'center' !important;
+			flex-grow: 2;
+			max-height: 70px;
 		}
 	}
 }

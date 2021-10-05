@@ -3,24 +3,21 @@ import "./scss/LandingScreen.css";
 import AnimatedMenuCSS from "../components/AnimatedMenuCSS";
 import { DrawerCart } from "../components/DrawerCart";
 import { useWindowDimensions } from "../helper/ScreenSize";
-import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-	Link,
-	useLocation,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Authenticate } from "./Authenticate";
 import { Users } from "./Users";
 import { About } from "./About";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleDrawer, closeDrawer } from "../store/actions/drawer";
+import { toggleDrawer } from "../store/actions/drawer";
 import { ProtectedRoute } from "../helper/ProtectedRoute";
+import { HeaderComponent } from "../components/HeaderComponenet";
 
 export const LandingScreen = (props) => {
 	const [drawerState, setDrawerState] = React.useState("drawer-inactive");
 	const ScreenSize = useWindowDimensions();
 	const drawer = useSelector((state) => state.drawer.drawer);
+	const { email } = useSelector((state) => state.auth);
+	console.log(email);
 	const dispatch = useDispatch();
 
 	const handleClick = () => {
@@ -69,6 +66,18 @@ export const LandingScreen = (props) => {
 								<div onClick={handleClick}>
 									<AnimatedMenuCSS />
 								</div>
+								<HeaderComponent
+									headeritem={
+										email
+											? `${email
+													.slice(0, email.search("@"))
+													.toUpperCase()}`
+											: "Authenticate"
+									}
+									route="/authenticate"
+								/>
+								<HeaderComponent headeritem="About Me" route="/aboutme" />
+								<HeaderComponent headeritem="Products" route="/products" />
 							</div>
 						</Route>
 						<Route>
@@ -78,7 +87,7 @@ export const LandingScreen = (props) => {
 						</Route>
 
 						<Route path="/aboutme" component={About} />
-						<ProtectedRoute path="/products" component={Users} />  
+						<ProtectedRoute path="/products" component={Users} />
 						<Route path="/authenticate" component={Authenticate} />
 						<Route>
 							<div className="footer">

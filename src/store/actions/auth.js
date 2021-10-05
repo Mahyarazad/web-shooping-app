@@ -32,6 +32,7 @@ export const signUp = (email, password) => {
 
 		if (!response.ok) {
 			const errResponse = await response.json();
+
 			const errorId = errResponse.error.errors[0].message;
 			const messageHandler = (id) => {
 				
@@ -64,7 +65,8 @@ export const login = (email, password) => {
 				`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${env.apiKey}`,
 				{
 					method: "POST",
-					headers: { "Content-Type": "application/json" },
+					headers: { "Content-Type": "application/json"
+					},
 					body: JSON.stringify({
 						email: email,
 						password: password,
@@ -75,6 +77,7 @@ export const login = (email, password) => {
 
 			if (!response.ok) {
 				const errResponse = await response.json();
+				console.log(errResponse)
 				const errorId = errResponse.error.errors[0].message;
 				const messageHandler = (id) => {
 					switch (id) {
@@ -91,6 +94,7 @@ export const login = (email, password) => {
 				throw new Error(errResponse.error.errors[0].message);
 			}
 			const resData = await response.json();
+			console.log(resData)
 			dispatch({ type: LOGIN, resData: resData });
 
 			const { localId, idToken, expiresIn } = resData;
@@ -100,6 +104,7 @@ export const login = (email, password) => {
 			);
 			storeData({ localId, idToken, expirationDate, email: resData.email });
 		} catch (err) {
+			console.warn(err)
 			throw new Error(err.message);
 		}
 	};

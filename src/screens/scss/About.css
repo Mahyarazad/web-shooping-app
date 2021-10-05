@@ -1,5 +1,17 @@
 @media (min-width: 300px) and (max-width: 700px) {
   .body {
+    padding-left: 4vw;
+    padding-right: 4vw;
+    overflow-x: hidden;
+    background-color: #e6d0af;
+  }
+  .body p {
+    font-size: 20px !important;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 2000px) {
+  .body {
     display: -webkit-box !important;
     display: -ms-flexbox !important;
     display: flex !important;
@@ -15,6 +27,11 @@
             align-items: center;
     padding-left: 4vw;
     padding-right: 4vw;
+    background-color: #e6d0af;
+  }
+  .body p {
+    font-size: 20px !important;
+    font-weight: bolder;
   }
 }
 /*# sourceMappingURL=About.css.map */

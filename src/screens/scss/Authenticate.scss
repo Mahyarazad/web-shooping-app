@@ -1,18 +1,19 @@
-$width: 80vw;
+$mobileWidth: 80vw;
 $primaryColor: #fc036b;
+$webWidth: 500px;
+$webHeight: 50px;
 
 @media (min-width: 300px) and (max-width: 700px) {
-	@mixin bodySize() {
+	@mixin mobileInputStyle() {
 		font-family: Glory;
 		margin-top: 2vw;
 		margin-bottom: 2vw;
-		width: $width;
+		width: $mobileWidth;
 		height: 10vw;
 		border-radius: 1vw;
 		border-width: 1px;
 		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 		z-index: 1;
-        
 	}
 	input {
 		font-family: Glory;
@@ -20,7 +21,7 @@ $primaryColor: #fc036b;
 		font-size: 18px;
 		border-width: 0px;
 		background-color: transparent;
-		width: $width;
+		width: $mobileWidth;
 		height: 10vw;
 		margin-left: 1vw;
 		z-index: 1;
@@ -30,17 +31,16 @@ $primaryColor: #fc036b;
 		width: 100vw;
 		height: 77vh;
 		z-index: 0;
-		// object-fit: cover;
 	}
 	.authenticate-body {
-        overflow: hidden !important;
+		overflow: hidden !important;
 		display: flex !important;
 		justify-content: center;
 		flex-direction: column !important;
 		align-items: center;
 		.inputContainer {
 			background-color: white;
-			@include bodySize();
+			@include mobileInputStyle();
 			display: flex;
 			align-items: center;
 		}
@@ -55,7 +55,7 @@ $primaryColor: #fc036b;
 			background-color: $primaryColor;
 			color: white;
 			font-size: 18px;
-			@include bodySize();
+			@include mobileInputStyle();
 		}
 	}
 
@@ -68,7 +68,7 @@ $primaryColor: #fc036b;
 			top: 28vw;
 			opacity: 1;
 		}
-        50% {
+		50% {
 			top: 25vw;
 		}
 		90% {
@@ -80,20 +80,148 @@ $primaryColor: #fc036b;
 	}
 	.notify-modal {
 		position: absolute;
-		width: 100vw;
+		width: 90vw;
 		height: 10vh;
-		left: 5vw;
+		left: 6vw;
 		z-index: 1;
 		color: white;
 		font-size: 5.5vw;
-		animation: Notify 4s forwards;
+		animation: Notify 3s forwards;
+	}
+
+	@mixin userInfoMobileStyle {
+		font-size: 5vw;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		font-weight: bold;
+		color: white;
+	}
+	.user-info {
+		@include mobileInputStyle();
+		@include userInfoMobileStyle();
+
+	}
+	.user-info-message {
+		@include mobileInputStyle();
+		@include userInfoMobileStyle();
+		box-shadow: none;
 	}
 }
+@media (min-width: 700px) and (max-width: 1800px) {
+	@keyframes Notify {
+		0% {
+			margin-bottom: 500px;
+			opacity: 0;
+		}
+		50% {
+			margin-bottom: 600px;
+			opacity: 1;
+		}
+		90% {
+			margin-bottom: 600px;
+			opacity: 1;
+		}
+		100% {
+			margin-bottom: 0px;
+			opacity: 0;
+		}
+	}
+	@mixin NotifyStyle() {
+		position: fixed;
+		width: 400px auto;
+		height: 10px;
+		z-index: 2;
+		color: rgb(0, 0, 0);
+		font-size: 20px;
+	}
+	.notify-modal {
+		@include NotifyStyle();
+		animation: Notify 3s forwards;
+	}
+	.notify-modal-fast {
+		@include NotifyStyle();
+		animation: Notify 2s forwards;
+	}
+	.authenticate-body {
+		@mixin centerContent() {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		@mixin webInputStyle() {
+			font-family: Glory;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			width: $webWidth;
+			height: $webHeight;
+			border-radius: 5px;
+			border-width: 1px;
+			box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+			z-index: 1;
+		}
+		@include centerContent();
+		background-color: rgb(255, 247, 232);
 
-@media (min-width: 700x) and (max-width: 1800px) {
-    &body {
-        
-        overflow: hidden !important;
-    }
+		.login-btn {
+			&:hover {
+				background-color: white;
+				color: $primaryColor;
+				transition: all 0.3s;
+				font-style: bold;
+			}
+			font-family: Glory;
+			font-weight: bold;
+			background-color: $primaryColor;
+			color: white;
+			font-size: 18px;
+			@include webInputStyle();
+			border-width: 0 !important;
+		}
+		.inputContainer {
+			background-color: white;
+			display: flex;
+			align-items: center;
+			@include webInputStyle();
+			input {
+				width: $webWidth - 1.5 * $webHeight;
+				border-width: 0;
+				height: $webHeight * 0.9;
+				margin-left: 10px;
+				font-family: Glory;
+				font-size: 22px;
+				font-weight: bold;
+			}
+			::placeholder {
+				font-family: Glory;
+				font-size: 20px;
+			}
+			.eye-icon,
+			.password-icon,
+			.email-icon {
+				width: $webHeight - 20;
+			}
+		}
 
+		.user-info {
+			@include webInputStyle();
+			font-weight: bold;
+			font-size: 22px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		.user-info-message {
+			@include webInputStyle();
+			box-shadow: none;
+			font-weight: bold;
+			font-size: 22px;
+			align-items: center;
+			display: flex;
+			flex-direction: column;
+		}
+	}
 }

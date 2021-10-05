@@ -1,0 +1,77 @@
+$headerItem: 100px;
+$headerHeight: 50px;
+$primaryColor: #fc036b;
+$lineColor: #ffffff;
+
+@mixin lineStyle {
+	display: block;
+	position: absolute;
+	height: 3px;
+	margin-top: 20px;
+	width: $headerItem;
+	opacity: 0;
+	background-color: $lineColor;
+}
+
+.header-container {
+	font-family: Glory;
+	background-color: transparent;
+	display: block;
+	animation: all 0.5s;
+    &:hover{
+        background-color: rgba(0, 0, 0, 0.35);
+        transition: all 0.1s;
+		font-weight: bold;
+			
+				
+			.left-line {
+				@keyframes growLeft {
+					0% {
+						width: 0px;
+						margin-left: $headerItem;
+					}
+
+					100% {
+						width: $headerItem;
+					}
+				}
+				opacity: 1;
+				animation: growLeft 0.7s ease-in;
+			}
+			.right-line {
+				@keyframes growRight {
+					0% {
+						width: 0px;
+					}
+
+					100% {
+						width: $headerItem;
+					}
+				}
+				opacity: 1;
+				animation: growRight 0.7s ease-in;
+			}
+			cursor: pointer;
+    }
+	.header-item {
+		align-content: flex-start;
+		text-align: center;
+		width: $headerItem * 2;
+		margin-top: 22px;
+		font-size: 22px;
+		color: white;
+		
+	}
+	.line-container {
+		display: flex;
+		flex-direction: column;
+	}
+	.left-line {
+		@include lineStyle();
+        
+	}
+	.right-line {
+		margin-left: $headerItem;
+		@include lineStyle();
+	}
+}

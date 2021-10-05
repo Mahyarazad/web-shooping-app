@@ -4,14 +4,33 @@ $primaryColor: #fc036b;
 @media (min-width: 300px) and (max-width: 700px) {
 	
 	.body {
+
+		padding-left: 4vw;
+		padding-right: 4vw;
+		overflow-x: hidden;
+		background-color: rgb(230, 208, 175);
+		p{ 
+			font-size: 20px !important;
+		}
+	}
+
+}
+@media (min-width: 700px) and (max-width: 2000px) {
+	
+	.body {
 		display: flex !important;
 		justify-content: center;
 		flex-direction: column !important;
 		align-items: center;
 		padding-left: 4vw;
 		padding-right: 4vw;
+		background-color: rgb(230, 208, 175);
 		
-		
+		p{ 
+			font-size: 20px !important;
+			font-weight: bolder;
+		}
+
 	}
 
 }
